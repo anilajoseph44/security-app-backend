@@ -64,6 +64,13 @@ router.post("/signin",async(req,res)=>{
 
 })
 
+router.get("/viewsecurities",async(req,res)=>{
+
+    let result=await securitymodel.find()
+    res.json(result)
+
+})
+
 
 
 
