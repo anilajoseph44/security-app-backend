@@ -32,5 +32,39 @@ router.post("/securityadd",async(req,res)=>{
 
 })
 
+router.post("/signin",async(req,res)=>{
+    let email=req.body.email
+    let data=await securitymodel.findOne({"email":email})
+    if(!data)
+    {
+        return res.json(
+            {
+                status:"Invalid security"
+            }
+        )
+    }
+
+    let dbpassword=data.password
+    let inputpassword=req.body.password
+    const match=await bcrypt.compare(inputpassword,dbpassword)
+    if(!match)
+    {
+        return res.json(
+            {
+                status:"Incorrect password"
+            }
+        )
+    }
+
+    res.json(
+        {
+            status:"Success"
+        }
+    )
+
+})
+
+
+
 
 module.exports=router
