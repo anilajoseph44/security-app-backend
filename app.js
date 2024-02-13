@@ -2,6 +2,7 @@ const express=require("express")
 const cors=require("cors")
 const mongoose=require("mongoose")
 const securityrouting=require("./controllers/securityrouter")
+const visitorRouting=require("./controllers/visitorrouter")
 
 const app=express()
 
@@ -14,6 +15,7 @@ mongoose.connect("mongodb+srv://anilasandrajose01:sandrajoseph99@cluster0.vpgyky
 })
 
 app.use("/api/security",securityrouting)
+app.use("/api/visitor",visitorRouting)
 
 app.listen(3005,()=>{
     console.log("Server running")
