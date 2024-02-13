@@ -11,7 +11,7 @@ router.post("/addvisitor",async(req,res)=>{
     res.json(
         {
             status:"success",
-            "userdata":data
+
         }
     )
 
@@ -20,7 +20,9 @@ router.post("/addvisitor",async(req,res)=>{
 
 router.get("/viewvisitor",async(req,res)=>{
 
-    let result=await visitormodel.find()
+    let result=await visitormodel.find().
+    populate("userid","name email -_id").
+    exec()
     res.json(result)
 
 })

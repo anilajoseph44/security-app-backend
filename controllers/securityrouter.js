@@ -39,7 +39,7 @@ router.post("/signin",async(req,res)=>{
     {
         return res.json(
             {
-                status:"Invalid security"
+                status:"Invalid security",
             }
         )
     }
@@ -58,7 +58,8 @@ router.post("/signin",async(req,res)=>{
 
     res.json(
         {
-            status:"Success"
+            status:"success",
+            "userdata":data
         }
     )
 
